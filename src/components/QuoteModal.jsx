@@ -94,13 +94,13 @@ export default function QuoteModal({ open, onClose, prefilledWorkType = '' }) {
                       <option value="">Sélectionnez une prestation</option>
                       {siteContent.services.map((service) => <option key={service.title} value={service.title}>{service.title}</option>)}
                     </select>
-                    {errors.workType && <small>{errors.workType}</small>}
+                    {errors.workType && <small role="alert">{errors.workType}</small>}
                   </label>
                   <FormField label="Localisation du projet" name="location" value={values.location} onChange={update} error={errors.location} required />
                   <label className={`form-field form-field--full${errors.description ? ' has-error' : ''}`}>
                     <span>Description du projet <em>*</em></span>
                     <textarea name="description" rows="4" value={values.description} onChange={update} aria-invalid={Boolean(errors.description)} />
-                    {errors.description && <small>{errors.description}</small>}
+                    {errors.description && <small role="alert">{errors.description}</small>}
                   </label>
                   <label className="form-field form-field--honeypot" aria-hidden="true">
                     <span>Site web</span>
@@ -125,7 +125,7 @@ const FormField = forwardRef(function FormField({ label, name, value, onChange, 
     <label className={`form-field${error ? ' has-error' : ''}`}>
       <span>{label} {required && <em>*</em>}</span>
       <input ref={ref} name={name} type={type} value={value} onChange={onChange} aria-invalid={Boolean(error)} {...props} />
-      {error && <small>{error}</small>}
+      {error && <small role="alert">{error}</small>}
     </label>
   )
 })
